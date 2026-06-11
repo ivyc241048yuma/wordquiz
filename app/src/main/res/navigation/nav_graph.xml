@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment"
+        android:name="com.example.wordquizbattle.ui.home.HomeFragment"
+        android:label="ホーム" />
+
+    <fragment android:id="@+id/deckListFragment"
+        android:name="com.example.wordquizbattle.ui.deck.DeckListFragment"
+        android:label="単語">
+        <action android:id="@+id/toDeckCreate"
+            app:destination="@id/deckCreateFragment" />
+        <action android:id="@+id/toWordList"
+            app:destination="@id/wordListFragment" />
+    </fragment>
+
+    <fragment android:id="@+id/deckCreateFragment"
+        android:name="com.example.wordquizbattle.ui.deck.DeckCreateFragment"
+        android:label="デッキ作成" />
+
+    <fragment android:id="@+id/wordListFragment"
+        android:name="com.example.wordquizbattle.ui.word.WordListFragment"
+        android:label="単語一覧">
+        <action android:id="@+id/toWordRegister"
+            app:destination="@id/wordRegisterFragment" />
+        <action android:id="@+id/toModeSelect"
+            app:destination="@id/modeSelectFragment" />
+    </fragment>
+
+    <fragment android:id="@+id/wordRegisterFragment"
+        android:name="com.example.wordquizbattle.ui.word.WordRegisterFragment"
+        android:label="単語登録" />
+
+    <fragment android:id="@+id/modeSelectFragment"
+        android:name="com.example.wordquizbattle.ui.quiz.ModeSelectFragment"
+        android:label="モード選択">
+        <action android:id="@+id/toQuiz"
+            app:destination="@id/quizFragment" />
+        <action android:id="@+id/toTimeAttack"
+            app:destination="@id/quizFragment" />
+    </fragment>
+
+    <fragment android:id="@+id/quizFragment"
+        android:name="com.example.wordquizbattle.ui.quiz.QuizFragment"
+        android:label="クイズ">
+        <action android:id="@+id/toResult"
+            app:destination="@id/resultFragment" />
+    </fragment>
+
+    <fragment android:id="@+id/resultFragment"
+        android:name="com.example.wordquizbattle.ui.result.ResultFragment"
+        android:label="結果">
+        <action android:id="@+id/toAnalysis"
+            app:destination="@id/analysisFragment" />
+    </fragment>
+
+    <fragment android:id="@+id/rankingFragment"
+        android:name="com.example.wordquizbattle.ui.ranking.RankingFragment"
+        android:label="ランキング" />
+
+    <fragment android:id="@+id/analysisFragment"
+        android:name="com.example.wordquizbattle.ui.analysis.AnalysisFragment"
+        android:label="弱点分析" />
+
+</navigation>
