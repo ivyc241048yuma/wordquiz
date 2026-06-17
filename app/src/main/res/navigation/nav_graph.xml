@@ -24,6 +24,9 @@
     <fragment android:id="@+id/wordListFragment"
         android:name="com.example.wordquizbattle.ui.word.WordListFragment"
         android:label="単語一覧">
+        <argument
+            android:name="deckId"
+            app:argType="long" />
         <action android:id="@+id/toWordRegister"
             app:destination="@id/wordRegisterFragment" />
         <action android:id="@+id/toModeSelect"
