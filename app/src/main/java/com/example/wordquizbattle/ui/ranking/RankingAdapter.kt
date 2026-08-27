@@ -2,20 +2,27 @@ package com.example.wordquizbattle.ui.ranking
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wordquizbattle.data.db.entity.QuizResult
 import com.example.wordquizbattle.databinding.ItemRankingBinding
 
-class RankingAdapter : ListAdapter<QuizResult, RankingAdapter.ViewHolder>(DiffCallback()) {
+data class RankingItem(
+    val deckName: String,
+    val score: Int,
+    val maxCombo: Int,
+    val rank: Int
+)
+
+class RankingAdapter : ListAdapter<RankingItem, RankingAdapter.ViewHolder>(DiffCallback()) {
 
     inner class ViewHolder(private val binding: ItemRankingBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(result: QuizResult, rank: Int) {
-            binding.tvRank.text = "$rank"
-            binding.tvRankingScore.text = "Score: ${result.score}"
-            binding.tvRankingCombo.text = "Combo: ${result.maxCombo}"
+        fun bind(item: RankingItem) {
+            binding.tvRank.text = "${item.rank}"
+            binding.tvDeckName.text = item.deckName
+            binding.tvRankingCombo.text = "最大コンボ ×${item.maxCombo}"
+            binding.tvRankingScore.text = "${item.score}"
         }
     }
 
@@ -27,11 +34,13 @@ class RankingAdapter : ListAdapter<QuizResult, RankingAdapter.ViewHolder>(DiffCa
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position), position + 1)
+        holder.bind(getItem(position))
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<QuizResult>() {
-        override fun areItemsTheSame(oldItem: QuizResult, newItem: QuizResult) = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: QuizResult, newItem: QuizResult) = oldItem == newItem
+    class DiffCallback : DiffUtil.ItemCallback<RankingItem>() {
+        override fun areItemsTheSame(oldItem: RankingItem, newItem: RankingItem) =
+            oldItem.rank == newItem.rank
+        override fun areContentsTheSame(oldItem: RankingItem, newItem: RankingItem) =
+            oldItem == newItem
     }
 }

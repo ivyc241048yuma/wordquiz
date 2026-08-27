@@ -26,3 +26,9 @@ data class QuizResult(
     val timeTakenMs: Long? = null,
     val playedAt: Long = System.currentTimeMillis()
 )
+data class RankingItem(
+    val deckName: String,
+    val score: Int,
+    val maxCombo: Int,
+    val rank: Int
+)
