@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wordquizbattle.data.db.AppDatabase
 import com.example.wordquizbattle.databinding.FragmentAnalysisBinding
@@ -44,6 +45,10 @@ class AnalysisFragment : Fragment() {
                 items.map { it.accuracy }.average().toInt()
             else 0
             binding.tvOverallAccuracy.text = "全体正解率: $overall%"
+        }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

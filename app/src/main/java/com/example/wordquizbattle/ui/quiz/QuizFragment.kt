@@ -63,6 +63,10 @@ class QuizFragment : Fragment() {
             quizViewModel.loadQuestions(deckId, mode, 10)
             showQuestion()
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun showQuestion() {

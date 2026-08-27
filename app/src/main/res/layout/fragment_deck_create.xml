@@ -1,42 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="#F5F5F0">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilDeckName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="デッキ名（必須）">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etDeckName"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="デッキを作成"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#1A1A1A"
+            android:layout_marginBottom="24dp" />
+
+        <!-- デッキ名 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="デッキ名"
+            android:textSize="13sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="6dp" />
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/etDeckName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="14dp"
+                android:hint="デッキ名を入力"
+                android:textSize="15sp"
+                android:background="@null"
+                android:inputType="text" />
+        </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilDeckDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="説明（任意）">
+        <!-- 説明 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="説明"
+            android:textSize="13sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="6dp" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etDeckDescription"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/etDeckDescription"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="14dp"
+                android:hint="説明を入力..."
+                android:textSize="15sp"
+                android:background="@null"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+        </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/btnSaveDeck"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="保存" />
+        <!-- テーマカラー -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="テーマカラー"
+            android:textSize="13sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="12dp" />
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/colorPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <View
+                android:id="@+id/colorBlue"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/circle_dot_blue"
+                android:layout_marginEnd="10dp" />
+
+            <View
+                android:id="@+id/colorGreen"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/circle_dot_green"
+                android:layout_marginEnd="10dp" />
+
+            <View
+                android:id="@+id/colorOrange"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/circle_dot_orange"
+                android:layout_marginEnd="10dp" />
+
+            <View
+                android:id="@+id/colorRed"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/circle_dot_red"
+                android:layout_marginEnd="10dp" />
+
+            <View
+                android:id="@+id/colorMint"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/circle_dot_mint" />
+        </LinearLayout>
+
+        <!-- プレビューカード -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/viewPreviewColor"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/circle_dot_blue"
+                    android:layout_marginEnd="14dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPreviewName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="デッキ名"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A1A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0語・プレビュー"
+                        android:textSize="12sp"
+                        android:textColor="#888888" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 作成ボタン -->
+        <Button
+            android:id="@+id/btnCreateDeck"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="デッキを作成する"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#7E57C2"
+            android:stateListAnimator="@null" />
+
+    </LinearLayout>
+</ScrollView>

@@ -2,21 +2,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F5F5F0"
+    android:padding="20dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDecks"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddDeck"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add" />
+        android:text="デッキ選択"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#1A1A1A" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="マイデッキ"
+        android:textSize="13sp"
+        android:textColor="#888888"
+        android:layout_marginBottom="16dp" />
+
+    <!-- デッキ一覧 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDeckList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- 新しいデッキを作成 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAddDeck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#FFFFFF"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="＋"
+                android:textSize="18sp"
+                android:textColor="#888888"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新しいデッキを作成"
+                android:textSize="14sp"
+                android:textColor="#888888" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- このデッキで始めるボタン -->
+    <Button
+        android:id="@+id/btnStartDeck"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="このデッキで始める"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#5C6BC0"
+        android:stateListAnimator="@null" />
 
 </LinearLayout>

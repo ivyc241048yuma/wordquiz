@@ -8,12 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.wordquizbattle.databinding.FragmentWordRegisterBinding
+import com.example.wordquizbattle.viewmodel.DeckViewModel
 import com.example.wordquizbattle.viewmodel.WordViewModel
 
 class WordRegisterFragment : Fragment() {
     private var _binding: FragmentWordRegisterBinding? = null
     private val binding get() = _binding!!
     private val viewModel: WordViewModel by viewModels()
+    private val deckViewModel: DeckViewModel by viewModels()
     private var deckId: Long = 0
 
     override fun onCreateView(
@@ -26,6 +28,12 @@ class WordRegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         deckId = arguments?.getLong("deckId") ?: 0
+
+        // デッキ名を取得して表示
+        deckViewModel.loadDeckById(deckId)
+        deckViewModel.selectedDeck.observe(viewLifecycleOwner) { deck ->
+            binding.tvDeckName.text = deck?.name ?: "デッキが見つかりません"
+        }
 
         binding.btnSaveWord.setOnClickListener {
             val term = binding.etTerm.text.toString().trim()

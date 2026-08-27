@@ -1,5 +1,7 @@
 package com.example.wordquizbattle.ui.word
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -18,6 +20,28 @@ class WordAdapter(
         fun bind(word: Word) {
             binding.tvTerm.text = word.term
             binding.tvDefinition.text = word.definition
+
+            val total = word.correctCount + word.missCount
+            if (total == 0) {
+                // 未出題：グレーで「-」表示
+                binding.progressAccuracy.progress = 0
+                binding.progressAccuracy.progressTintList =
+                    ColorStateList.valueOf(Color.parseColor("#CCCCCC"))
+                binding.tvAccuracy.text = "-"
+                binding.tvAccuracy.setTextColor(Color.parseColor("#888888"))
+            } else {
+                val accuracy = (word.correctCount * 100) / total
+                val color = if (accuracy >= 60) {
+                    Color.parseColor("#4CAF50") // 緑（得意）
+                } else {
+                    Color.parseColor("#F44336") // 赤（苦手）
+                }
+                binding.progressAccuracy.progress = accuracy
+                binding.progressAccuracy.progressTintList = ColorStateList.valueOf(color)
+                binding.tvAccuracy.text = "$accuracy%"
+                binding.tvAccuracy.setTextColor(color)
+            }
+
             binding.btnDeleteWord.setOnClickListener { onDeleteClick(word) }
         }
     }
