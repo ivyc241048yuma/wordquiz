@@ -60,7 +60,8 @@ class QuizFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            quizViewModel.loadQuestions(deckId, mode, 10)
+            val questionCount = if (mode == "combo") 50 else 10
+            quizViewModel.loadQuestions(deckId, mode, questionCount)
             showQuestion()
         }
 
@@ -76,7 +77,13 @@ class QuizFragment : Fragment() {
         }
         val word = quizViewModel.currentWord() ?: return
         binding.tvQuestion.text = word.term
-        binding.tvProgress.text = "${quizViewModel.currentIndex + 1} / ${quizViewModel.questionCount()}"
+
+        binding.tvProgress.text = if (mode == "combo") {
+            "${quizViewModel.currentIndex + 1}問目"
+        } else {
+            "${quizViewModel.currentIndex + 1} / ${quizViewModel.questionCount()}"
+        }
+
         binding.tvScore.text = "Score: ${quizViewModel.score}  Combo: ${quizViewModel.currentCombo}"
 
         val choices = quizViewModel.generateChoices(word)
@@ -116,7 +123,7 @@ class QuizFragment : Fragment() {
                 score = quizViewModel.score,
                 maxCombo = quizViewModel.maxCombo,
                 scoreMultiplier = quizViewModel.scoreMultiplier,
-                totalQuestions = quizViewModel.questionCount(),
+                totalQuestions = if (mode == "combo") quizViewModel.currentIndex else quizViewModel.questionCount(),
                 correctAnswers = quizViewModel.answerLogs.count { it.isCorrect },
                 timeTakenMs = if (mode == "timeattack") 60000L - timeLeftMs else null
             )

@@ -38,7 +38,7 @@ class RankingFragment : Fragment() {
 
         setupTabs()
         loadRanking(selectedMode)
-        loadWeakWordsTop3()
+        loadWeakWordsTop3(selectedMode)  // ← 引数を追加
     }
 
     private fun setupTabs() {
@@ -53,6 +53,7 @@ class RankingFragment : Fragment() {
                 selectedMode = tabMap[tab] ?: selectedMode
                 updateTabUi(tabMap)
                 loadRanking(selectedMode)
+                loadWeakWordsTop3(selectedMode)
             }
         }
         updateTabUi(tabMap)
@@ -89,10 +90,10 @@ class RankingFragment : Fragment() {
         }
     }
 
-    private fun loadWeakWordsTop3() {
+    private fun loadWeakWordsTop3(mode: String) {
         val db = AppDatabase.getDatabase(requireContext())
         viewLifecycleOwner.lifecycleScope.launch {
-            val stats = db.quizAnswerLogDao().getWordAccuracyStats()
+            val stats = db.quizAnswerLogDao().getWordAccuracyStatsByMode(mode)
             val top3 = stats
                 .filter { it.total > 0 }
                 .map { stat ->

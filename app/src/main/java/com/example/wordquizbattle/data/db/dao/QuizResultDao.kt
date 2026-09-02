@@ -14,4 +14,13 @@ interface QuizResultDao {
 
     @Insert
     suspend fun insertResult(result: QuizResult): Long
+
+    @Query("SELECT DISTINCT date(playedAt/1000, 'unixepoch', 'localtime') as day FROM quiz_results ORDER BY day DESC")
+    suspend fun getDistinctPlayDates(): List<String>
+
+    @Query("""
+        SELECT MAX(score) FROM quiz_results
+        WHERE date(playedAt/1000, 'unixepoch', 'localtime') = date('now', '-1 day', 'localtime')
+    """)
+    suspend fun getYesterdayBestScore(): Int?
 }

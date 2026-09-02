@@ -31,4 +31,7 @@ interface WordDao {
 
     @Query("UPDATE words SET isActive = 0 WHERE id = :id")
     suspend fun deactivateWord(id: Long)
+
+    @Query("SELECT COUNT(*) FROM words WHERE isActive = 1")
+    suspend fun getTotalWordCount(): Int
 }

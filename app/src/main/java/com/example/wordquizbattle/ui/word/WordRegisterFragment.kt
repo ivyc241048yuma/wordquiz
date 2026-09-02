@@ -57,6 +57,10 @@ class WordRegisterFragment : Fragment() {
             )
             findNavController().popBackStack()
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun onDestroyView() {

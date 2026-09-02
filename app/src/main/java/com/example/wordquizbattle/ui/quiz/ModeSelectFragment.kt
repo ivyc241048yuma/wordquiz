@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.wordquizbattle.R
 import com.example.wordquizbattle.databinding.FragmentModeSelectBinding
+import com.example.wordquizbattle.util.LastDeckStore
 import com.example.wordquizbattle.viewmodel.DeckViewModel
 import com.example.wordquizbattle.viewmodel.WordViewModel
 
@@ -33,6 +34,7 @@ class ModeSelectFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         deckId = arguments?.getLong("deckId") ?: 0
+        LastDeckStore.saveLastDeckId(requireContext(), deckId)
 
         setupDeckInfo()
         setupModePicker()

@@ -12,17 +12,21 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
 
     private var questionList: List<Word> = emptyList()
     private var allWords: List<Word> = emptyList()
+    private var mode: String = "quiz"
     var currentIndex = 0
     var score = 0
     var currentCombo = 0
     var maxCombo = 0
     var scoreMultiplier = 1.0f
+    var lastAnswerCorrect = true
     val answerLogs = mutableListOf<QuizAnswerLog>()
 
     suspend fun loadQuestions(deckId: Long, mode: String, count: Int) {
+        this.mode = mode
         allWords = wordRepo.getRandomWords(deckId, 100)
         questionList = when (mode) {
             "weak" -> wordRepo.getWeakWords(deckId, count)
+            "combo" -> wordRepo.getRandomWords(deckId, count)
             else -> wordRepo.getRandomWords(deckId, count)
         }
     }
@@ -40,6 +44,7 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
 
     fun answer(selectedDef: String, correctDef: String, word: Word, timeTakenMs: Long): Boolean {
         val isCorrect = selectedDef == correctDef
+        lastAnswerCorrect = isCorrect
         if (isCorrect) {
             currentCombo++
             if (currentCombo > maxCombo) maxCombo = currentCombo
@@ -62,7 +67,13 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
         return isCorrect
     }
 
-    fun isFinished() = currentIndex >= questionList.size
+    fun isFinished(): Boolean {
+        if (mode == "combo") {
+            // 間違えた瞬間、または問題の在庫が尽きたら終了
+            return currentIndex >= questionList.size || !lastAnswerCorrect
+        }
+        return currentIndex >= questionList.size
+    }
 
     fun questionCount() = questionList.size
 }

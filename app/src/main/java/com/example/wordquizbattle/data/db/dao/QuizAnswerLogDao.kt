@@ -23,6 +23,23 @@ interface QuizAnswerLogDao {
 
     @Insert
     suspend fun insertLogs(logs: List<QuizAnswerLog>)
+
+    @Query("SELECT SUM(CASE WHEN isCorrect = 1 THEN 1 ELSE 0 END) as correct, COUNT(*) as total FROM quiz_answer_logs")
+    suspend fun getOverallAccuracy(): OverallAccuracy
+
+    data class OverallAccuracy(val correct: Int, val total: Int)
+
+    @Query("""
+        SELECT l.wordId as wordId,
+               SUM(CASE WHEN l.isCorrect = 1 THEN 1 ELSE 0 END) AS correct,
+            COUNT(*) AS total
+        FROM quiz_answer_logs l
+        INNER JOIN quiz_results r ON l.quizResultId = r.id
+        WHERE r.mode = :mode
+        GROUP BY l.wordId
+        ORDER BY CAST(correct AS REAL) / total ASC
+    """)
+    suspend fun getWordAccuracyStatsByMode(mode: String): List<WordAccuracy>
 }
 
 data class WordAccuracy(val wordId: Long, val correct: Int, val total: Int)
