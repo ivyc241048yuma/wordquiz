@@ -1,3 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WordQuizBattle</string>
+
+    <string name="delete">削除</string>
+    <string name="back">戻る</string>
+
+    <string name="add_word">単語を追加</string>
+    <string name="start_quiz">クイズを始める</string>
+    <string name="word_list_title">単語一覧</string>
+    <string name="deck_select_title">デッキ選択</string>
+    <string name="my_deck">マイデッキ</string>
+    <string name="add_new_deck">＋ 新しいデッキを作成</string>
+    <string name="start_with_deck">このデッキで始める</string>
+
+    <!-- モード選択画面 -->
+    <string name="mode_select_title">モードを選択</string>
+    <string name="mode_quiz_title">4択クイズ</string>
+    <string name="mode_quiz_desc">制限なし・スコア＆コンボ加算</string>
+    <string name="mode_timeattack_title">タイムアタック</string>
+    <string name="mode_timeattack_desc">60秒・速さが得点に直結</string>
+    <string name="mode_combo_title">コンボチャレンジ</string>
+    <string name="mode_combo_desc">間違えるまで継続・最大コンボを競う</string>
+    <string name="mode_weak_title">弱点特訓</string>
+    <string name="mode_weak_desc">正答率の低い単語だけ出題</string>
+    <string name="start">スタート</string>
+
+    <!-- ホーム画面 -->
+    <string name="app_title">World Quiz Battle</string>
+    <string name="home_subtitle">今日も単語を覚えよう</string>
+    <string name="today_streak">今日の連続記録</string>
+    <string name="registered_word_count">登録単語数</string>
+    <string name="average_accuracy">平均正答率</string>
+    <string name="quick_start">クイックスタート</string>
+    <string name="home_quiz_desc">ノーマルモードで挑戦</string>
+    <string name="home_timeattack_desc">60秒で何問答えられる？</string>
+    <string name="home_combo_desc">間違えるまで継続</string>
+    <string name="home_weak_desc">正答率の低い単語を優先出題</string>
+
+    <!-- デッキ作成画面 -->
+    <string name="deck_create_title">デッキを作成</string>
+    <string name="deck_name_label">デッキ名</string>
+    <string name="deck_name_hint">デッキ名を入力</string>
+    <string name="deck_description_label">説明</string>
+    <string name="deck_description_hint">説明を入力...</string>
+    <string name="theme_color_label">テーマカラー</string>
+    <string name="deck_create_button">デッキを作成する</string>
+    <string name="preview_word_count">0語・プレビュー</string>
+    <string name="color_blue">青</string>
+    <string name="color_green">緑</string>
+    <string name="color_orange">オレンジ</string>
+    <string name="color_red">赤</string>
+    <string name="color_mint">ミント</string>
+
+    <!-- 単語登録画面 -->
+    <string name="word_register_title">単語を登録</string>
+    <string name="deck_label">デッキ</string>
+    <string name="term_label">単語・用語</string>
+    <string name="term_hint">例）persuade</string>
+    <string name="definition_label">意味（正解）</string>
+    <string name="definition_hint">例）説得する</string>
+    <string name="example_label">例文（任意）</string>
+    <string name="example_hint">She persuaded him to stay.</string>
+    <string name="memo_label">メモ（任意）</string>
+    <string name="memo_hint">ヒントや覚え方を入力...</string>
+    <string name="save_word_button">保存する</string>
+
+    <!-- ランキング画面 -->
+    <string name="ranking_title">ランキング</string>
+    <string name="tab_normal">ノーマル</string>
+    <string name="tab_timeattack">タイムアタック</string>
+    <string name="tab_combo">コンボ</string>
+    <string name="weak_words_top3">弱点単語TOP3</string>
+
+    <!-- 結果画面 -->
+    <string name="result_title">結果</string>
+    <string name="view_analysis_button">弱点分析を見る</string>
+    <string name="back_home_button">ホームに戻る</string>
+
+    <!-- 弱点分析画面（プレースホルダー形式） -->
+    <string name="overall_accuracy_format">全体正解率: %1$d%%</string>
 </resources>

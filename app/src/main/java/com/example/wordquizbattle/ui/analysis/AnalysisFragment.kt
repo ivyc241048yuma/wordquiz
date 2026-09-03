@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wordquizbattle.data.db.AppDatabase
 import com.example.wordquizbattle.databinding.FragmentAnalysisBinding
 import kotlinx.coroutines.launch
+import com.example.wordquizbattle.R
 
 class AnalysisFragment : Fragment() {
     private var _binding: FragmentAnalysisBinding? = null
@@ -44,7 +45,7 @@ class AnalysisFragment : Fragment() {
             val overall = if (items.isNotEmpty())
                 items.map { it.accuracy }.average().toInt()
             else 0
-            binding.tvOverallAccuracy.text = "全体正解率: $overall%"
+            binding.tvOverallAccuracy.text = getString(R.string.overall_accuracy_format, overall)
         }
 
         binding.btnBack.setOnClickListener {

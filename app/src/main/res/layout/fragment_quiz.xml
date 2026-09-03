@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -18,7 +19,8 @@
             android:text="←"
             android:textSize="28sp"
             android:padding="10dp"
-            android:background="?attr/selectableItemBackgroundBorderless" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back" />
 
         <TextView
             android:id="@+id/tvProgress"
@@ -26,13 +28,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="1 / 10" />
+            tools:text="1 / 10" />
 
         <TextView
             android:id="@+id/tvTimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="" />
+            tools:text="" />
 
     </LinearLayout>
 
@@ -41,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:text="Score: 0  Combo: 0" />
+        tools:text="Score: 0  Combo: 0" />
 
     <TextView
         android:id="@+id/tvQuestion"
@@ -50,30 +52,35 @@
         android:layout_marginTop="32dp"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:gravity="center" />
+        android:gravity="center"
+        tools:text="ephemeral" />
 
     <Button
         android:id="@+id/btnChoice0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="32dp"
+        tools:text="選択肢A" />
 
     <Button
         android:id="@+id/btnChoice1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        tools:text="選択肢B" />
 
     <Button
         android:id="@+id/btnChoice2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        tools:text="選択肢C" />
 
     <Button
         android:id="@+id/btnChoice3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        tools:text="選択肢D" />
 
 </LinearLayout>

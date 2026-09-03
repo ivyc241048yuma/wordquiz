@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="12dp"
     app:cardElevation="0dp"
-    app:cardBackgroundColor="#FFFFFF">
+    app:cardBackgroundColor="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,36 +35,38 @@
                 android:id="@+id/tvDeckName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="デッキ名"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:textColor="#1A1A1A" />
+                android:textColor="@color/text_primary"
+                tools:text="デッキ名" />
 
             <TextView
                 android:id="@+id/tvDeckDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="説明"
                 android:textSize="12sp"
-                android:textColor="#888888" />
+                android:textColor="@color/text_secondary"
+                tools:text="説明" />
 
             <TextView
                 android:id="@+id/tvDeckStats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0問ー正答率--%"
                 android:textSize="12sp"
-                android:textColor="#888888" />
+                android:textColor="@color/text_secondary"
+                tools:text="0問ー正答率--%" />
         </LinearLayout>
 
         <!-- 削除ボタン -->
         <ImageButton
             android:id="@+id/btnDeleteDeck"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
             android:src="@android:drawable/ic_menu_delete"
-            android:background="@null"
-            android:contentDescription="削除" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/delete"
+            app:tint="@color/text_secondary" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F0">
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,27 +15,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="World Quiz Battle"
+            android:text="@string/app_title"
             android:textSize="26sp"
             android:textStyle="bold"
-            android:textColor="#1A1A1A" />
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="今日も単語を覚えよう"
+            android:text="@string/home_subtitle"
             android:textSize="13sp"
-            android:textColor="#888888"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="20dp" />
 
-        <!-- 連続記録カード -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="#EDE7F6">
+            app:cardBackgroundColor="@color/light_purple_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,30 +45,29 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="今日の連続記録"
+                    android:text="@string/today_streak"
                     android:textSize="13sp"
-                    android:textColor="#7E57C2" />
+                    android:textColor="@color/main_purple" />
 
                 <TextView
                     android:id="@+id/tvStreak"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0日"
                     android:textSize="36sp"
                     android:textStyle="bold"
-                    android:textColor="#7E57C2" />
+                    android:textColor="@color/main_purple"
+                    tools:text="0日" />
 
                 <TextView
                     android:id="@+id/tvYesterdayScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="昨日のスコア：--pt"
                     android:textSize="13sp"
-                    android:textColor="#9575CD" />
+                    android:textColor="#9575CD"
+                    tools:text="昨日のスコア：--pt" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- 統計2列 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,7 +81,7 @@
                 android:layout_marginEnd="8dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -94,17 +93,17 @@
                         android:id="@+id/tvWordCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
                         android:textSize="28sp"
                         android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
+                        android:textColor="@color/text_primary"
+                        tools:text="0" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="登録単語数"
+                        android:text="@string/registered_word_count"
                         android:textSize="12sp"
-                        android:textColor="#888888" />
+                        android:textColor="@color/text_secondary" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -115,7 +114,7 @@
                 android:layout_marginStart="8dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -127,29 +126,28 @@
                         android:id="@+id/tvAccuracy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="--%"
                         android:textSize="28sp"
                         android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
+                        android:textColor="@color/text_primary"
+                        tools:text="--%" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="平均正答率"
+                        android:text="@string/average_accuracy"
                         android:textSize="12sp"
-                        android:textColor="#888888" />
+                        android:textColor="@color/text_secondary" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
-        <!-- クイックスタート -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="クイックスタート"
+            android:text="@string/quick_start"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:textColor="#1A1A1A"
+            android:textColor="@color/text_primary"
             android:layout_marginBottom="12dp" />
 
         <androidx.cardview.widget.CardView
@@ -159,7 +157,7 @@
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -184,17 +182,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="4択クイズ"
+                        android:text="@string/mode_quiz_title"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
+                        android:textColor="@color/text_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ノーマルモードで挑戦"
+                        android:text="@string/home_quiz_desc"
                         android:textSize="12sp"
-                        android:textColor="#888888" />
+                        android:textColor="@color/text_secondary" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -206,7 +204,7 @@
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -231,17 +229,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="タイムアタック"
+                        android:text="@string/mode_timeattack_title"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
+                        android:textColor="@color/text_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="60秒で何問答えられる？"
+                        android:text="@string/home_timeattack_desc"
                         android:textSize="12sp"
-                        android:textColor="#888888" />
+                        android:textColor="@color/text_secondary" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -253,7 +251,7 @@
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -278,17 +276,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="コンボチャレンジ"
+                        android:text="@string/mode_combo_title"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
+                        android:textColor="@color/text_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="間違えるまで継続"
+                        android:text="@string/home_combo_desc"
                         android:textSize="12sp"
-                        android:textColor="#888888" />
+                        android:textColor="@color/text_secondary" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -299,7 +297,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -324,17 +322,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="弱点特訓"
+                        android:text="@string/mode_weak_title"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
+                        android:textColor="@color/text_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="正答率の低い単語を優先出題"
+                        android:text="@string/home_weak_desc"
                         android:textSize="12sp"
-                        android:textColor="#888888" />
+                        android:textColor="@color/text_secondary" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

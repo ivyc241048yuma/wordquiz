@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F0">
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,27 +18,27 @@
             android:layout_height="wrap_content"
             android:text="←"
             android:textSize="28sp"
-            android:textColor="#1A1A1A"
+            android:textColor="@color/text_primary"
             android:padding="10dp"
             android:layout_marginBottom="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="単語を登録"
+            android:text="@string/word_register_title"
             android:textSize="26sp"
             android:textStyle="bold"
-            android:textColor="#1A1A1A"
+            android:textColor="@color/text_primary"
             android:layout_marginBottom="24dp" />
 
-        <!-- デッキ名（表示のみ） -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="デッキ"
+            android:text="@string/deck_label"
             android:textSize="13sp"
-            android:textColor="#555555"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="6dp" />
 
         <androidx.cardview.widget.CardView
@@ -46,7 +47,7 @@
             android:layout_marginBottom="20dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="#EDE7F6">
+            app:cardBackgroundColor="@color/light_purple_bg">
 
             <TextView
                 android:id="@+id/tvDeckName"
@@ -55,18 +56,16 @@
                 android:padding="14dp"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:textColor="#5C6BC0"
-                tools:text="英単語 TOEIC"
-                xmlns:tools="http://schemas.android.com/tools" />
+                android:textColor="@color/navy"
+                tools:text="英単語 TOEIC" />
         </androidx.cardview.widget.CardView>
 
-        <!-- 単語・用語（必須） -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="単語・用語"
+            android:text="@string/term_label"
             android:textSize="13sp"
-            android:textColor="#555555"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="6dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#FFFFFF"
+            app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusTopStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
@@ -86,18 +85,17 @@
                 android:id="@+id/etTerm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="例）persuade"
+                android:hint="@string/term_hint"
                 android:textSize="15sp"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- 意味（正解）（必須） -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="意味（正解）"
+            android:text="@string/definition_label"
             android:textSize="13sp"
-            android:textColor="#555555"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="6dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -106,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="#FFFFFF"
+            app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusTopStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
@@ -117,18 +115,17 @@
                 android:id="@+id/etDefinition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="例）説得する"
+                android:hint="@string/definition_hint"
                 android:textSize="15sp"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- 例文（任意） -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="例文（任意）"
+            android:text="@string/example_label"
             android:textSize="13sp"
-            android:textColor="#555555"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="6dp" />
 
         <androidx.cardview.widget.CardView
@@ -137,27 +134,26 @@
             android:layout_marginBottom="20dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="@color/white">
 
             <EditText
                 android:id="@+id/etExample"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:padding="14dp"
-                android:hint="She persuaded him to stay."
+                android:hint="@string/example_hint"
                 android:textSize="14sp"
                 android:background="@null"
                 android:gravity="top"
                 android:inputType="textMultiLine" />
         </androidx.cardview.widget.CardView>
 
-        <!-- メモ（任意） -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="メモ（任意）"
+            android:text="@string/memo_label"
             android:textSize="13sp"
-            android:textColor="#555555"
+            android:textColor="@color/text_secondary"
             android:layout_marginBottom="6dp" />
 
         <androidx.cardview.widget.CardView
@@ -166,29 +162,28 @@
             android:layout_marginBottom="28dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardBackgroundColor="@color/white">
 
             <EditText
                 android:id="@+id/etMemo"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:padding="14dp"
-                android:hint="ヒントや覚え方を入力..."
+                android:hint="@string/memo_hint"
                 android:textSize="14sp"
                 android:background="@null"
                 android:gravity="top"
                 android:inputType="textMultiLine" />
         </androidx.cardview.widget.CardView>
 
-        <!-- 保存ボタン -->
         <Button
             android:id="@+id/btnSaveWord"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="保存する"
+            android:text="@string/save_word_button"
             android:textSize="16sp"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#7E57C2"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/main_purple"
             android:stateListAnimator="@null" />
 
     </LinearLayout>

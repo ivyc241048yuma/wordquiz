@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="main_purple">#7E57C2</color>
+    <color name="light_purple_bg">#EDE7F6</color>
+    <color name="navy">#5C6BC0</color>
+    <color name="background">#F5F5F0</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#6B6B6B</color>
+    <color name="white">#FFFFFF</color>
+    <color name="danger_red">#F44336</color>
+    <color name="success_green">#4CAF50</color>
 </resources>

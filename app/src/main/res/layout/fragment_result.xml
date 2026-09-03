@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,43 +10,54 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="結果"
+        android:text="@string/result_title"
         android:textSize="28sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/text_primary" />
 
     <TextView
         android:id="@+id/tvFinalScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/text_primary"
+        tools:text="Score: 3480" />
 
     <TextView
         android:id="@+id/tvCorrectRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="@color/text_secondary"
+        tools:text="正解率: 8 / 10 (80%)" />
 
     <TextView
         android:id="@+id/tvMaxCombo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="@color/text_secondary"
+        tools:text="最大コンボ ×5" />
 
     <Button
         android:id="@+id/btnViewAnalysis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="弱点分析を見る" />
+        android:text="@string/view_analysis_button"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/main_purple" />
 
     <Button
         android:id="@+id/btnBackHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="ホームに戻る" />
+        android:text="@string/back_home_button"
+        android:textColor="@color/main_purple"
+        android:backgroundTint="@color/light_purple_bg" />
 
 </LinearLayout>
