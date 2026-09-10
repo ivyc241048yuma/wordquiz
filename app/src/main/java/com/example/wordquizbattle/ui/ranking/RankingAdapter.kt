@@ -1,11 +1,14 @@
 package com.example.wordquizbattle.ui.ranking
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wordquizbattle.databinding.ItemRankingBinding
+import java.text.NumberFormat
+import java.util.Locale
 
 data class RankingItem(
     val deckName: String,
@@ -21,8 +24,16 @@ class RankingAdapter : ListAdapter<RankingItem, RankingAdapter.ViewHolder>(DiffC
         fun bind(item: RankingItem) {
             binding.tvRank.text = "${item.rank}"
             binding.tvDeckName.text = item.deckName
-            binding.tvRankingCombo.text = "最大コンボ ×${item.maxCombo}"
-            binding.tvRankingScore.text = "${item.score}"
+            binding.tvRankingScore.text =
+                NumberFormat.getNumberInstance(Locale.JAPAN).format(item.score)
+
+            // 1位のみ最大コンボをバッジ表示（写真デザインの「MAX×5」に合わせる）
+            if (item.rank == 1 && item.maxCombo > 0) {
+                binding.tvMaxComboBadge.visibility = View.VISIBLE
+                binding.tvMaxComboBadge.text = "MAX×${item.maxCombo}"
+            } else {
+                binding.tvMaxComboBadge.visibility = View.GONE
+            }
         }
     }
 

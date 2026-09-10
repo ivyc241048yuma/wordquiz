@@ -166,12 +166,14 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
+                <!-- 4択クイズカードのアイコン -->
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:text="🎯"
-                    android:textSize="22sp"
-                    android:gravity="center" />
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:background="@drawable/circle_bg_pink" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -213,12 +215,14 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
+                <!-- タイムアタックカードのアイコン -->
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:text="⏱"
-                    android:textSize="22sp"
-                    android:gravity="center" />
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:background="@drawable/circle_bg_gray" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -260,12 +264,14 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
+                <!-- コンボチャレンジカードのアイコン -->
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:text="🔥"
-                    android:textSize="22sp"
-                    android:gravity="center" />
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:background="@drawable/circle_bg_orange" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -306,12 +312,14 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
+                <!-- 弱点特訓カードのアイコン -->
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:text="🎯"
-                    android:textSize="22sp"
-                    android:gravity="center" />
+                    android:text="📈"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:background="@drawable/circle_bg_purple" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"

@@ -34,4 +34,7 @@ interface WordDao {
 
     @Query("SELECT COUNT(*) FROM words WHERE isActive = 1")
     suspend fun getTotalWordCount(): Int
+
+    @Query("SELECT COUNT(*) FROM words WHERE deckId = :deckId AND isActive = 1")
+    suspend fun getWordCountByDeck(deckId: Long): Int
 }

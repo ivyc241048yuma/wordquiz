@@ -40,6 +40,14 @@ interface QuizAnswerLogDao {
         ORDER BY CAST(correct AS REAL) / total ASC
     """)
     suspend fun getWordAccuracyStatsByMode(mode: String): List<WordAccuracy>
+
+    @Query("""
+        SELECT SUM(CASE WHEN l.isCorrect = 1 THEN 1 ELSE 0 END) as correct, COUNT(*) as total
+        FROM quiz_answer_logs l
+        INNER JOIN words w ON l.wordId = w.id
+        WHERE w.deckId = :deckId
+    """)
+    suspend fun getAccuracyByDeck(deckId: Long): OverallAccuracy
 }
 
 data class WordAccuracy(val wordId: Long, val correct: Int, val total: Int)

@@ -1,11 +1,16 @@
 package com.example.wordquizbattle.ui.analysis
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wordquizbattle.databinding.ItemWeakWordBinding
 
-data class WeakWordItem(val term: String, val accuracy: Int)
+data class WeakWordItem(
+    val term: String,
+    val accuracy: Int,
+    val definition: String? = null
+)
 
 class AnalysisAdapter : RecyclerView.Adapter<AnalysisAdapter.ViewHolder>() {
     private var items: List<WeakWordItem> = emptyList()
@@ -19,7 +24,19 @@ class AnalysisAdapter : RecyclerView.Adapter<AnalysisAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: WeakWordItem) {
             binding.tvWeakTerm.text = item.term
-            binding.tvWeakAccuracy.text = "${item.accuracy}%"
+            binding.progressWeakAccuracy.max = 100
+            binding.progressWeakAccuracy.progress = item.accuracy
+
+            if (item.definition.isNullOrBlank()) {
+                // ランキング画面TOP3：意味なし・パーセントのみ
+                binding.tvWeakDefinition.visibility = View.GONE
+                binding.tvWeakAccuracy.text = "${item.accuracy}%"
+            } else {
+                // 弱点分析画面：意味あり・「◯%正解」表記
+                binding.tvWeakDefinition.visibility = View.VISIBLE
+                binding.tvWeakDefinition.text = item.definition
+                binding.tvWeakAccuracy.text = "${item.accuracy}%正解"
+            }
         }
     }
 

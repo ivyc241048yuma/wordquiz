@@ -23,4 +23,15 @@ interface QuizResultDao {
         WHERE date(playedAt/1000, 'unixepoch', 'localtime') = date('now', '-1 day', 'localtime')
     """)
     suspend fun getYesterdayBestScore(): Int?
+
+    // 結果画面：resultIdから1件取得
+    @Query("SELECT * FROM quiz_results WHERE id = :id")
+    suspend fun getResultById(id: Long): QuizResult?
+
+    // 結果画面：自己ベスト判定用（同じdeckId・modeで、自分自身を除いた過去の最高スコア）
+    @Query("""
+        SELECT MAX(score) FROM quiz_results
+        WHERE deckId = :deckId AND mode = :mode AND id != :excludeId
+    """)
+    suspend fun getBestScore(deckId: Long, mode: String, excludeId: Long): Int?
 }

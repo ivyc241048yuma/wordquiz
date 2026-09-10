@@ -12,26 +12,38 @@
         android:padding="20dp">
 
         <TextView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="←"
+            android:textSize="28sp"
+            android:textColor="@color/text_primary"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/deck_create_title"
-            android:textSize="26sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/deck_name_label"
-            android:textSize="13sp"
+            android:textSize="15sp"
             android:textColor="@color/text_secondary"
-            android:layout_marginBottom="6dp" />
+            android:layout_marginBottom="8dp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="16dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/white">
@@ -42,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:padding="14dp"
                 android:hint="@string/deck_name_hint"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:background="@null"
                 android:inputType="text" />
         </androidx.cardview.widget.CardView>
@@ -51,14 +63,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/deck_description_label"
-            android:textSize="13sp"
+            android:textSize="15sp"
             android:textColor="@color/text_secondary"
-            android:layout_marginBottom="6dp" />
+            android:layout_marginBottom="8dp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="16dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/white">
@@ -69,7 +81,7 @@
                 android:layout_height="100dp"
                 android:padding="14dp"
                 android:hint="@string/deck_description_hint"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:background="@null"
                 android:gravity="top"
                 android:inputType="textMultiLine" />
@@ -79,23 +91,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/theme_color_label"
-            android:textSize="13sp"
+            android:textSize="15sp"
             android:textColor="@color/text_secondary"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="8dp" />
 
         <LinearLayout
             android:id="@+id/colorPicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="16dp">
 
             <View
                 android:id="@+id/colorBlue"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:background="@drawable/circle_dot_blue"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/color_blue" />
 
             <View
@@ -103,7 +115,7 @@
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:background="@drawable/circle_dot_green"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/color_green" />
 
             <View
@@ -111,7 +123,7 @@
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:background="@drawable/circle_dot_orange"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/color_orange" />
 
             <View
@@ -119,7 +131,7 @@
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:background="@drawable/circle_dot_red"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/color_red" />
 
             <View
@@ -133,7 +145,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="20dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/white">
@@ -147,8 +159,8 @@
 
                 <View
                     android:id="@+id/viewPreviewColor"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:background="@drawable/circle_dot_blue"
                     android:layout_marginEnd="14dp" />
 
@@ -162,7 +174,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/deck_name_label"
-                        android:textSize="15sp"
+                        android:textSize="17sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary" />
 
@@ -170,7 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/preview_word_count"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/text_secondary" />
                 </LinearLayout>
             </LinearLayout>
@@ -181,7 +193,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="@string/deck_create_button"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
             android:backgroundTint="@color/main_purple"
             android:stateListAnimator="@null" />

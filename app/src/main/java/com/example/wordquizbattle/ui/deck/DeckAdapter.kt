@@ -8,23 +8,29 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wordquizbattle.R
 import com.example.wordquizbattle.data.db.entity.Deck
 import com.example.wordquizbattle.databinding.ItemDeckBinding
+
+data class DeckWithStats(
+    val deck: Deck,
+    val wordCount: Int,
+    val accuracy: Int?
+)
 
 class DeckAdapter(
     private val onSingleClick: (Deck) -> Unit,
     private val onDoubleClick: (Deck) -> Unit,
     private val onDeleteClick: (Deck) -> Unit
-) : ListAdapter<Deck, DeckAdapter.DeckViewHolder>(DiffCallback()) {
+) : ListAdapter<DeckWithStats, DeckAdapter.DeckViewHolder>(DiffCallback()) {
 
     private var selectedDeckId: Long? = null
 
-    /** DeckListFragment側から選択状態を更新するための窓口 */
     fun setSelectedDeck(deckId: Long?) {
         val oldId = selectedDeckId
         selectedDeckId = deckId
-        currentList.forEachIndexed { index, deck ->
-            if (deck.id == oldId || deck.id == deckId) {
+        currentList.forEachIndexed { index, item ->
+            if (item.deck.id == oldId || item.deck.id == deckId) {
                 notifyItemChanged(index)
             }
         }
@@ -36,14 +42,12 @@ class DeckAdapter(
         private val gestureDetector = GestureDetector(
             binding.root.context,
             object : GestureDetector.SimpleOnGestureListener() {
-                override fun onDown(e: MotionEvent): Boolean {
-                    return true
-                }
+                override fun onDown(e: MotionEvent): Boolean = true
 
                 override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
                     val position = bindingAdapterPosition
                     if (position != RecyclerView.NO_POSITION) {
-                        onSingleClick(getItem(position))
+                        onSingleClick(getItem(position).deck)
                     }
                     return true
                 }
@@ -51,7 +55,7 @@ class DeckAdapter(
                 override fun onDoubleTap(e: MotionEvent): Boolean {
                     val position = bindingAdapterPosition
                     if (position != RecyclerView.NO_POSITION) {
-                        onDoubleClick(getItem(position))
+                        onDoubleClick(getItem(position).deck)
                     }
                     return true
                 }
@@ -64,9 +68,15 @@ class DeckAdapter(
             }
         }
 
-        fun bind(deck: Deck) {
+        fun bind(item: DeckWithStats) {
+            val deck = item.deck
             binding.tvDeckName.text = deck.name
             binding.tvDeckDescription.text = deck.description ?: ""
+
+            val accuracyText = if (item.accuracy != null) "${item.accuracy}%" else "--%"
+            binding.tvDeckStats.text = binding.root.context.getString(
+                R.string.deck_stats_format, item.wordCount, accuracyText
+            )
 
             try {
                 binding.viewColor.setBackgroundColor(Color.parseColor(deck.colorHex))
@@ -74,7 +84,6 @@ class DeckAdapter(
                 binding.viewColor.setBackgroundColor(Color.parseColor("#845ef7"))
             }
 
-            // 選択中なら薄いパープル背景、それ以外は白
             val isSelected = deck.id == selectedDeckId
             binding.root.setCardBackgroundColor(
                 Color.parseColor(if (isSelected) "#EDE7F6" else "#FFFFFF")
@@ -95,8 +104,10 @@ class DeckAdapter(
         holder.bind(getItem(position))
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<Deck>() {
-        override fun areItemsTheSame(oldItem: Deck, newItem: Deck) = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: Deck, newItem: Deck) = oldItem == newItem
+    class DiffCallback : DiffUtil.ItemCallback<DeckWithStats>() {
+        override fun areItemsTheSame(oldItem: DeckWithStats, newItem: DeckWithStats) =
+            oldItem.deck.id == newItem.deck.id
+        override fun areContentsTheSame(oldItem: DeckWithStats, newItem: DeckWithStats) =
+            oldItem == newItem
     }
 }

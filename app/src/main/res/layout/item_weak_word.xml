@@ -4,17 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="12dp"
+    android:background="@drawable/bg_weak_word_pink"
+    android:padding="14dp"
+    android:layout_marginBottom="8dp"
     android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/tvWeakTerm"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="15sp"
-        android:textColor="@color/text_primary"
-        tools:text="ephemeral" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvWeakTerm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            tools:text="ephemeral" />
+
+        <!-- ランキングTOP3では使わないので初期はgone。分析画面ではAdapter側でVISIBLEにする -->
+        <TextView
+            android:id="@+id/tvWeakDefinition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:text="はかない、短命な" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressWeakAccuracy"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="60dp"
+        android:layout_height="6dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:max="100"
+        android:progressDrawable="@drawable/word_accuracy_progress"
+        tools:progress="30" />
 
     <TextView
         android:id="@+id/tvWeakAccuracy"

@@ -31,7 +31,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:textSize="13sp"
-            android:background="@drawable/tab_selected" />
+            android:background="@drawable/tab_unselected" />
 
         <TextView
             android:id="@+id/tabTimeAttack"
@@ -76,7 +76,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvWeakWordsTop3"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

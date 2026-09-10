@@ -9,4 +9,8 @@
     <color name="white">#FFFFFF</color>
     <color name="danger_red">#F44336</color>
     <color name="success_green">#4CAF50</color>
+    <color name="input_field_bg">#EEEEEE</color>
+    <color name="ranking_tab_selected_bg">#F6D776</color>
+    <color name="weak_word_bg">#FBE1E3</color>
+    <color name="correct_choice_bg">#E8F5E9</color>
 </resources>

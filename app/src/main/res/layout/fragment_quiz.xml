@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/background"
+    android:padding="20dp">
 
+    <!-- 進捗・コンボバッジ -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,8 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="←"
-            android:textSize="28sp"
-            android:padding="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/text_primary"
+            android:padding="6dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/back" />
 
@@ -27,60 +31,205 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            tools:text="1 / 10" />
+            android:layout_marginStart="4dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            tools:text="4 / 10問" />
 
         <TextView
-            android:id="@+id/tvTimer"
+            android:id="@+id/tvComboBadge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="" />
+            android:background="@drawable/bg_badge_yellow"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:text="×3 コンボ" />
 
     </LinearLayout>
 
+    <!-- タイムアタック用タイマー（timeattack以外はGONE） -->
     <TextView
-        android:id="@+id/tvScore"
+        android:id="@+id/tvTimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        tools:text="Score: 0  Combo: 0" />
-
-    <TextView
-        android:id="@+id/tvQuestion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginTop="4dp"
         android:gravity="center"
-        tools:text="ephemeral" />
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:textColor="@color/danger_red"
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:text="42" />
 
+    <!-- 進捗バー -->
+    <ProgressBar
+        android:id="@+id/progressQuiz"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="10dp"
+        android:max="10"
+        android:progressDrawable="@drawable/bg_quiz_progress"
+        tools:progress="4" />
+
+    <!-- スコア・倍率 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="18dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_score_label"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
+
+            <TextView
+                android:id="@+id/tvScoreValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/main_purple"
+                tools:text="1,240" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_multiplier_label"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
+
+            <TextView
+                android:id="@+id/tvMultiplierValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                tools:text="×1.5" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 問題カード -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="28dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/light_purple_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="28dp">
+
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/main_purple"
+                tools:text="ephemeral" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/quiz_direction_label"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 選択肢 -->
     <Button
         android:id="@+id/btnChoice0"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        tools:text="選択肢A" />
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_field"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textColor="@color/text_primary"
+        android:gravity="start|center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:stateListAnimator="@null"
+        android:layout_marginBottom="10dp"
+        tools:text="A.永続的な" />
 
     <Button
         android:id="@+id/btnChoice1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        tools:text="選択肢B" />
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_field"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textColor="@color/text_primary"
+        android:gravity="start|center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:stateListAnimator="@null"
+        android:layout_marginBottom="10dp"
+        tools:text="B.はかない、短命な" />
 
     <Button
         android:id="@+id/btnChoice2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        tools:text="選択肢C" />
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_field"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textColor="@color/text_primary"
+        android:gravity="start|center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:stateListAnimator="@null"
+        android:layout_marginBottom="10dp"
+        tools:text="C.活発的な" />
 
     <Button
         android:id="@+id/btnChoice3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        tools:text="選択肢D" />
+        android:layout_height="56dp"
+        android:background="@drawable/bg_input_field"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textColor="@color/text_primary"
+        android:gravity="start|center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:stateListAnimator="@null"
+        tools:text="D.曖昧な" />
 
 </LinearLayout>

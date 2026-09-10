@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wordquizbattle.data.db.AppDatabase
 import com.example.wordquizbattle.databinding.FragmentAnalysisBinding
 import kotlinx.coroutines.launch
-import com.example.wordquizbattle.R
 
 class AnalysisFragment : Fragment() {
     private var _binding: FragmentAnalysisBinding? = null
     private val binding get() = _binding!!
+
+    // 「苦手」の基準は単語一覧画面のフィルタと合わせて正答率60%未満
+    private val weakAccuracyThreshold = 60
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,22 +36,35 @@ class AnalysisFragment : Fragment() {
 
         lifecycleScope.launch {
             val stats = db.quizAnswerLogDao().getWordAccuracyStats()
+                .filter { it.total > 0 }
 
-            val items = stats.map { stat ->
-                val word = db.wordDao().getWordById(stat.wordId)
-                val accuracy = if (stat.total > 0) (stat.correct * 100 / stat.total) else 0
-                WeakWordItem(word?.term ?: "不明", accuracy)
-            }
-            adapter.submitList(items)
+            // 全体成功率は出題実績がある単語すべてから算出
+            val overall = if (stats.isNotEmpty()) {
+                stats.map { (it.correct * 100 / it.total) }.average().toInt()
+            } else 0
+            binding.tvOverallAccuracyValue.text = "$overall%"
 
-            val overall = if (items.isNotEmpty())
-                items.map { it.accuracy }.average().toInt()
-            else 0
-            binding.tvOverallAccuracy.text = getString(R.string.overall_accuracy_format, overall)
+            // 苦手ランキングは正答率60%未満のみ、正答率が低い順
+            val weakItems = stats
+                .filter { (it.correct * 100 / it.total) < weakAccuracyThreshold }
+                .mapNotNull { stat ->
+                    val word = db.wordDao().getWordById(stat.wordId) ?: return@mapNotNull null
+                    val accuracy = stat.correct * 100 / stat.total
+                    WeakWordItem(term = word.term, accuracy = accuracy, definition = word.definition)
+                }
+                .sortedBy { it.accuracy }
+
+            adapter.submitList(weakItems)
+            binding.tvWeakWordCountValue.text = "${weakItems.size}語"
         }
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        // TODO: 「苦手単語だけクイズする」の動作は未実装（対象範囲を確認してから実装）
+        binding.btnQuizWeakWords.setOnClickListener {
+            // 未実装
         }
     }
 

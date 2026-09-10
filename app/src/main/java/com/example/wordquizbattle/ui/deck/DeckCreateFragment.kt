@@ -29,6 +29,10 @@ class DeckCreateFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         setupColorPicker()
 
         binding.btnCreateDeck.setOnClickListener {

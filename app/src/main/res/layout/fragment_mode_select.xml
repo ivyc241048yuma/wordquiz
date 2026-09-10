@@ -33,23 +33,29 @@
             android:textColor="@color/text_primary"
             android:layout_marginBottom="12dp" />
 
+        <!-- デッキ情報：グレーの角丸ボックス化 -->
         <TextView
             android:id="@+id/tvDeckInfo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textColor="@color/text_secondary"
+            android:background="@drawable/bg_input_field"
+            android:padding="14dp"
             android:layout_marginBottom="20dp"
             tools:text="日本史　用語・32語" />
 
-        <androidx.cardview.widget.CardView
+        <!-- 4択クイズ -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardQuizMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/white">
+            app:strokeWidth="0dp"
+            app:strokeColor="@color/main_purple"
+            app:cardBackgroundColor="@color/input_field_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,6 +64,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvQuizTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mode_quiz_title"
@@ -66,6 +73,7 @@
                     android:textColor="@color/text_primary" />
 
                 <TextView
+                    android:id="@+id/tvQuizDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -73,16 +81,19 @@
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <!-- タイムアタック -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardTimeAttackMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/white">
+            app:strokeWidth="0dp"
+            app:strokeColor="@color/main_purple"
+            app:cardBackgroundColor="@color/input_field_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,6 +102,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvTimeAttackTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mode_timeattack_title"
@@ -99,6 +111,7 @@
                     android:textColor="@color/text_primary" />
 
                 <TextView
+                    android:id="@+id/tvTimeAttackDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -106,16 +119,19 @@
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <!-- コンボチャレンジ -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardComboMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/white">
+            app:strokeWidth="0dp"
+            app:strokeColor="@color/main_purple"
+            app:cardBackgroundColor="@color/input_field_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -124,6 +140,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvComboTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mode_combo_title"
@@ -132,6 +149,7 @@
                     android:textColor="@color/text_primary" />
 
                 <TextView
+                    android:id="@+id/tvComboDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -139,16 +157,19 @@
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <!-- 弱点特訓 -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardWeakMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/white">
+            app:strokeWidth="0dp"
+            app:strokeColor="@color/main_purple"
+            app:cardBackgroundColor="@color/input_field_bg">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -157,6 +178,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tvWeakTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mode_weak_title"
@@ -165,6 +187,7 @@
                     android:textColor="@color/text_primary" />
 
                 <TextView
+                    android:id="@+id/tvWeakDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -172,7 +195,7 @@
                     android:textSize="12sp"
                     android:textColor="@color/text_secondary" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <Button
             android:id="@+id/btnStartMode"
@@ -181,7 +204,7 @@
             android:text="@string/start"
             android:textSize="16sp"
             android:textColor="@color/white"
-            android:backgroundTint="@color/main_purple"
+            android:background="@drawable/bg_button_purple_pill"
             android:stateListAnimator="@null" />
 
     </LinearLayout>

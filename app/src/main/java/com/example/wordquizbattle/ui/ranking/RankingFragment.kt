@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wordquizbattle.R
 import com.example.wordquizbattle.data.db.AppDatabase
 import com.example.wordquizbattle.databinding.FragmentRankingBinding
 import com.example.wordquizbattle.ui.analysis.AnalysisAdapter
@@ -38,7 +40,7 @@ class RankingFragment : Fragment() {
 
         setupTabs()
         loadRanking(selectedMode)
-        loadWeakWordsTop3(selectedMode)  // ← 引数を追加
+        loadWeakWordsTop3(selectedMode)
     }
 
     private fun setupTabs() {
@@ -60,14 +62,19 @@ class RankingFragment : Fragment() {
     }
 
     private fun updateTabUi(tabMap: Map<android.widget.TextView, String>) {
+        val context = requireContext()
         tabMap.forEach { (tab, mode) ->
             val isSelected = mode == selectedMode
+            // ランキング専用の選択色（黄色）。単語一覧の既存tab_selected（紫）とは別ファイル。
             tab.setBackgroundResource(
-                if (isSelected) com.example.wordquizbattle.R.drawable.tab_selected
-                else com.example.wordquizbattle.R.drawable.tab_unselected
+                if (isSelected) R.drawable.tab_selected_ranking
+                else R.drawable.tab_unselected
             )
             tab.setTextColor(
-                android.graphics.Color.parseColor(if (isSelected) "#FFFFFF" else "#888888")
+                ContextCompat.getColor(
+                    context,
+                    if (isSelected) R.color.text_primary else R.color.text_secondary
+                )
             )
         }
     }

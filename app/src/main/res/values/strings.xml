@@ -74,9 +74,36 @@
 
     <!-- 結果画面 -->
     <string name="result_title">結果</string>
+    <string name="total_score_label">TOTAL SCORE</string>
+    <string name="max_combo_label">最大コンボ</string>
+    <string name="new_best_label">自己ベスト更新</string>
+    <string name="correct_count_label">正解数</string>
+    <string name="accuracy_label">正答率</string>
+    <string name="avg_time_label">平均解答時間</string>
+    <string name="max_multiplier_label">最大倍率</string>
+    <string name="wrong_words_title">間違えた単語</string>
+    <string name="retry_quiz_button">もう一度チャレンジ</string>
     <string name="view_analysis_button">弱点分析を見る</string>
     <string name="back_home_button">ホームに戻る</string>
 
     <!-- 弱点分析画面（プレースホルダー形式） -->
     <string name="overall_accuracy_format">全体正解率: %1$d%%</string>
+
+    <string name="deck_stats_format">%1$d問ー正答率%2$s</string>
+
+    <string name="analysis_title">弱点分析</string>
+    <string name="overall_accuracy_label">全体成功率</string>
+    <string name="weak_word_count_label">苦手単語数</string>
+    <string name="weak_ranking_title">苦手ランキング</string>
+    <string name="quiz_weak_words_button">苦手単語だけクイズする</string>
+
+    <string name="search_word_hint">単語を検索</string>
+    <string name="filter_all">すべて</string>
+    <string name="filter_weak">苦手</string>
+    <string name="filter_unseen">未出題</string>
+    <string name="search_icon_desc">検索</string>
+
+    <string name="quiz_score_label">スコア</string>
+    <string name="quiz_multiplier_label">倍率</string>
+    <string name="quiz_direction_label">英語　→　日本語</string>
 </resources>
