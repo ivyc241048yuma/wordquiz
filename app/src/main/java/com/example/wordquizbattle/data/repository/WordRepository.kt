@@ -11,4 +11,8 @@ class WordRepository(private val wordDao: WordDao) {
     suspend fun getRandomWords(deckId: Long, n: Int) = wordDao.getRandomWords(deckId, n)
     suspend fun getWeakWords(deckId: Long, n: Int) = wordDao.getWeakWords(deckId, n)
     suspend fun getById(id: Long) = wordDao.getWordById(id)
+
+    // 弱点分析画面の「苦手単語だけクイズする」用（デッキ横断）
+    suspend fun getWeakWordsAllDecks(n: Int) = wordDao.getWeakWordsAllDecks(n)
+    suspend fun getRandomWordsAllDecks(n: Int) = wordDao.getRandomWordsAllDecks(n)
 }

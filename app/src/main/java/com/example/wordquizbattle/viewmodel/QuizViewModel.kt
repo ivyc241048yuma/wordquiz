@@ -23,11 +23,17 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
 
     suspend fun loadQuestions(deckId: Long, mode: String, count: Int) {
         this.mode = mode
-        allWords = wordRepo.getRandomWords(deckId, 100)
-        questionList = when (mode) {
-            "weak" -> wordRepo.getWeakWords(deckId, count)
-            "combo" -> wordRepo.getRandomWords(deckId, count)
-            else -> wordRepo.getRandomWords(deckId, count)
+        if (mode == "weak_global") {
+            // 弱点分析画面から：デッキを問わず苦手な単語だけを集めて出題
+            allWords = wordRepo.getRandomWordsAllDecks(100)
+            questionList = wordRepo.getWeakWordsAllDecks(count)
+        } else {
+            allWords = wordRepo.getRandomWords(deckId, 100)
+            questionList = when (mode) {
+                "weak" -> wordRepo.getWeakWords(deckId, count)
+                "combo" -> wordRepo.getRandomWords(deckId, count)
+                else -> wordRepo.getRandomWords(deckId, count)
+            }
         }
     }
 

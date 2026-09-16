@@ -90,6 +90,8 @@ class ResultFragment : Fragment() {
                 }
             }
             wrongWordAdapter.submitList(wrongWords)
+            binding.rvWrongWords.visibility = if (wrongWords.isEmpty()) View.GONE else View.VISIBLE
+            binding.tvNoWrongWords.visibility = if (wrongWords.isEmpty()) View.VISIBLE else View.GONE
         }
     }
 

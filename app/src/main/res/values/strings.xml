@@ -106,4 +106,7 @@
     <string name="quiz_score_label">スコア</string>
     <string name="quiz_multiplier_label">倍率</string>
     <string name="quiz_direction_label">英語　→　日本語</string>
+
+    <string name="no_wrong_words_message">間違いなし！全問正解です🎉</string>
+    <string name="no_weak_words_message">苦手な単語はまだありません</string>
 </resources>

@@ -56,15 +56,21 @@ class AnalysisFragment : Fragment() {
 
             adapter.submitList(weakItems)
             binding.tvWeakWordCountValue.text = "${weakItems.size}語"
+            binding.btnQuizWeakWords.isEnabled = weakItems.isNotEmpty()
+            binding.rvWeakWords.visibility = if (weakItems.isEmpty()) View.GONE else View.VISIBLE
+            binding.tvNoWeakWords.visibility = if (weakItems.isEmpty()) View.VISIBLE else View.GONE
         }
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
 
-        // TODO: 「苦手単語だけクイズする」の動作は未実装（対象範囲を確認してから実装）
         binding.btnQuizWeakWords.setOnClickListener {
-            // 未実装
+            val bundle = Bundle().apply {
+                putLong("deckId", 0L)
+                putString("mode", "weak_global")
+            }
+            findNavController().navigate(com.example.wordquizbattle.R.id.quizFragment, bundle)
         }
     }
 
